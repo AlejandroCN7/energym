@@ -141,6 +141,9 @@ class EplusDiscrete(gym.Env):
         """
         
         # Map action into setpoint
+        # Depends on algorithm, action can be an interger or a numpy.ndarray (maybe for problems whose action are several values)
+        if(type(action)==np.ndarray):
+            action=action[0]
         setpoints = self.action_mapping[action]
         action_ = [setpoints[0], setpoints[1]]
         
